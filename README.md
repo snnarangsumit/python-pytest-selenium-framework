@@ -1,84 +1,163 @@
 # Python Pytest Selenium Framework
 
-![Python](https://img.shields.io/badge/python-3.11-blue)
-![Pytest](https://img.shields.io/badge/pytest-8.3-green)
-![CI](https://img.shields.io/github/actions/workflow/status/snnarangsumit/python-pytest-selenium-framework/python-app.yml)
+Enterprise-grade UI test automation framework built with Python, Pytest, and Selenium WebDriver.
 
-## 🛠 Overview
-A modern Python Selenium framework using pytest for UI automation.  
-It demonstrates **Page Object Model (POM)** design, reusable utilities, and reporting.  
-Designed to be scalable, CI/CD-ready, and interview-friendly.
+## 🎯 Overview
 
----
+This framework implements the **Page Object Model (POM)** design pattern for maintainable and scalable UI automation. Built for enterprise web applications with cross-browser support and CI/CD integration.
 
-## 🛠 Tech Stack
-- Python 3.9 - 3.12  
-- Selenium 4.24+  
-- Pytest 8.3+  
-- HTML/Allure Reporting  
-- GitHub Actions CI/CD
+## ✨ Key Features
 
----
+- ✅ **Page Object Model** - Clean separation of test logic and page elements
+- ✅ **Cross-Browser Testing** - Chrome, Firefox, Edge support
+- ✅ **Parallel Execution** - Run tests in parallel using pytest-xdist
+- ✅ **Data-Driven Testing** - Support for Excel, CSV, and JSON data sources
+- ✅ **Smart Waits** - Explicit and implicit wait strategies
+- ✅ **Screenshot on Failure** - Automatic capture for debugging
+- ✅ **Comprehensive Logging** - Detailed execution logs
+- ✅ **HTML & Allure Reports** - Multiple reporting options
+- ✅ **CI/CD Ready** - GitHub Actions integration
 
-## 🛠 Features
-- Page Object Model (POM) design  
-- Supports Chrome, Firefox, and remote browsers  
-- Environment-based configuration (dev, stage)  
-- Reusable helper utilities  
-- Secure secrets handling  
-- Generates test reports with logs  
+## 📋 Prerequisites
 
----
+- Python 3.8+
+- pip package manager
+- Chrome/Firefox browser
 
-## 🛠 Folder Structure
-```
-python-pytest-selenium-framework/
-├── config/ # environment configs
-├── drivers/ # browser driver setup
-├── resources/ # test data (JSON, CSV, YAML)
-├── src/
-│   └── pageobjects/ # Page Object Models
-├── tests/
-│   └── fill_form/ # test scripts organized by feature
-├── utils/ # helper functions (logger, browser utils)
-├── .github/ # CI/CD workflows
-├── requirements.txt
-├── conftest.py
-├── README.md
-└── .gitignore
-```
+## 🚀 Quick Start
 
----
-
-## 🛠 How to Run
-
-1. Clone the repository:
+### Installation
 ```bash
+# Clone the repository
 git clone https://github.com/snnarangsumit/python-pytest-selenium-framework.git
 cd python-pytest-selenium-framework
-```
 
-2. Install dependencies:
-```bash
+# Create virtual environment (recommended)
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-3. Run tests:
+### Run Tests
 ```bash
+# Run all tests
+pytest tests/ -v
+
+# Run specific test file
+pytest tests/test_login.py -v
+
+# Run tests with markers
+pytest -m smoke    # Smoke tests only
+pytest -m regression    # Regression tests
+
+# Parallel execution
+pytest tests/ -n 4    # Run with 4 workers
+
+# Generate HTML report
 pytest tests/ --html=reports/report.html --self-contained-html
+
+# Generate Allure report
+pytest tests/ --alluredir=reports/allure
+allure serve reports/allure
 ```
 
-4. Open report:
+## 📁 Project Structure
 ```
-reports/report.html
+python-pytest-selenium-framework/
+│
+├── pages/                  # Page Object classes
+│   ├── base_page.py       # Base page with common methods
+│   ├── login_page.py      # Login page objects
+│   └── home_page.py       # Home page objects
+│
+├── tests/                  # Test cases
+│   ├── conftest.py        # Pytest fixtures
+│   ├── test_login.py      # Login tests
+│   └── test_home.py       # Home page tests
+│
+├── utilities/              # Helper utilities
+│   ├── logger.py          # Logging utility
+│   └── screenshot.py      # Screenshot utility
+│
+├── test_data/             # Test data files
+│   └── test_data.json     # JSON test data
+│
+├── config/                # Configuration files
+│   └── config.ini         # Application config
+│
+├── reports/               # Test reports (auto-generated)
+├── logs/                  # Log files (auto-generated)
+│
+├── requirements.txt       # Python dependencies
+├── pytest.ini            # Pytest configuration
+└── README.md             # This file
 ```
+
+## ⚙️ Configuration
+
+Edit `config/config.ini` to customize:
+- Base URL
+- Browser selection (chrome/firefox/edge)
+- Timeout values
+- Screenshot settings
+
+## 🔧 Tech Stack
+
+- **Python** - Programming language
+- **Pytest** - Testing framework
+- **Selenium WebDriver** - Browser automation
+- **WebDriver Manager** - Automatic driver management
+- **Allure** - Test reporting
+- **GitHub Actions** - CI/CD
+
+## 📊 Reports
+
+- **HTML Reports** - Available in `reports/html/`
+- **Allure Reports** - Interactive reports with detailed test steps
+- **Screenshots** - Captured on test failures in `reports/screenshots/`
+- **Logs** - Detailed execution logs in `logs/`
+
+## 🤝 Best Practices Implemented
+
+- Page Object Model (POM) design pattern
+- DRY principle - Reusable methods
+- Explicit waits over implicit waits
+- Independent test cases
+- Meaningful assertions
+- Proper error handling
+- Clean code structure
+
+## 📝 Sample Test
+```python
+import pytest
+from pages.login_page import LoginPage
+
+class TestLogin:
+    
+    @pytest.mark.smoke
+    def test_valid_login(self, driver):
+        login_page = LoginPage(driver)
+        login_page.navigate_to_login()
+        login_page.login("username", "password")
+        assert login_page.is_login_successful()
+```
+
+## 🔄 CI/CD Integration
+
+This framework includes GitHub Actions workflow for automated test execution on:
+- Push to main/develop branches
+- Pull requests
+- Scheduled runs (daily)
+
+## 📧 Contact
+
+**Sumit Narang**
+- LinkedIn: [linkedin.com/in/sumit-narang15](https://www.linkedin.com/in/sumit-narang15)
+- GitHub: [@snnarangsumit](https://github.com/snnarangsumit)
+
 
 ---
 
-## 🛠 Talking Points
-- Framework design & POM explanation  
-- Environment/config management  
-- Reporting & CI/CD integration  
-- Utilities & reusability  
-- Cross-browser support and scalability
-
+⭐ **If you find this framework helpful, please give it a star!**
