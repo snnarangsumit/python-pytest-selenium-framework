@@ -1,6 +1,12 @@
 # Python Pytest Selenium Framework
 
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python)
+![Selenium](https://img.shields.io/badge/Selenium-4.x-green?style=for-the-badge&logo=selenium)
+![Pytest](https://img.shields.io/badge/Pytest-7.x-orange?style=for-the-badge&logo=pytest)
+![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
+
 Enterprise-grade UI test automation framework built with Python, Pytest, and Selenium WebDriver.
+
 
 ## 🎯 Overview
 
