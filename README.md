@@ -67,32 +67,31 @@ allure serve reports/allure
 ```
 python-pytest-selenium-framework/
 │
-├── pages/                  # Page Object classes
-│   ├── base_page.py       # Base page with common methods
-│   ├── login_page.py      # Login page objects
-│   └── home_page.py       # Home page objects
+├── src/                    # Source code
+│   ├── pages/             # Page Object classes
+│   └── helpers/           # Helper functions
 │
 ├── tests/                  # Test cases
-│   ├── conftest.py        # Pytest fixtures
-│   ├── test_login.py      # Login tests
-│   └── test_home.py       # Home page tests
+│   └── conftest.py        # Pytest fixtures
 │
-├── utilities/              # Helper utilities
+├── utils/                  # Utility modules
 │   ├── logger.py          # Logging utility
 │   └── screenshot.py      # Screenshot utility
 │
-├── test_data/             # Test data files
-│   └── test_data.json     # JSON test data
+├── config/                 # Configuration files
+│   └── key.properties     # App configuration
 │
-├── config/                # Configuration files
-│   └── config.ini         # Application config
+├── resources/              # Test resources & data
 │
-├── reports/               # Test reports (auto-generated)
-├── logs/                  # Log files (auto-generated)
+├── drivers/                # WebDriver binaries
 │
-├── requirements.txt       # Python dependencies
-├── pytest.ini            # Pytest configuration
-└── README.md             # This file
+├── .github/workflows/      # CI/CD pipelines
+│
+├── requirements.txt        # Python dependencies
+├── pytest.ini              # Pytest configuration
+├── Dockerfile              # Docker configuration
+├── conftest.py             # Root-level fixtures
+└── README.md               # This file
 ```
 
 ## ⚙️ Configuration
